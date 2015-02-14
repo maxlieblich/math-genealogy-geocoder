@@ -82,6 +82,7 @@ CREATE TABLE degree (
 		person_id INTEGER,
 		degree TEXT,
 		title TEXT,
+                subject TEXT,
 		year INTEGER
 );
 		''')
@@ -202,8 +203,8 @@ CREATE TABLE school_location (
 			
 			# Insert "new" degree
 			cur.execute('''INSERT INTO degree 
-			(person_id, degree, title, year) VALUES (?, ?, ?, ?)''',
-			(scholar.id, degree.degree, degree.title, degree.year))
+			(person_id, degree, title, year) VALUES (?, ?, ?, ?, ?)''',
+			(scholar.id, degree.degree, degree.title, degree.subject, degree.year))
 			conn.commit()  # to get lastrowid
 			# New degree id
 			degree_id = cur.lastrowid
